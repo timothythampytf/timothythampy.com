@@ -55,7 +55,17 @@
         <span></span>
       </div>
       <div class="songs">
-        <ol class="tracks" id="songs-list"></ol>
+        <div>
+          <ol class="tracks" id="songs-list"></ol>
+          <form class="signup" id="signup" method="post" hidden>
+            <p class="signup-lead">untitled, 2026. <span>hear it first.</span></p>
+            <div class="signup-row">
+              <input type="email" name="email_address" placeholder="your email" required autocomplete="email" aria-label="email address">
+              <button type="submit">notify me →</button>
+            </div>
+            <p class="signup-note" aria-live="polite">only when there's something to hear.</p>
+          </form>
+        </div>
         <figure class="songs-panel">
           <img class="in-focus" src="assets/photos/blur-soft.jpg" alt="">
           <figcaption>untitled, 2026</figcaption>

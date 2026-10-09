@@ -139,7 +139,7 @@
     songs.innerHTML = SITE.own
       .map((r, i) => {
         const secret = !r.title;
-        const attrs = r.play ? `href="#" data-play="${r.play}" data-label="${esc(r.title)}"` : `role="presentation"`;
+        const attrs = r.play ? `href="#" data-play="${r.play}" data-label="${esc(r.title)}"` : `href="#signup"`;
         const cap = secret ? "untitled, 2026" : `${r.title}, ${r.kind.match(/\d{4}/)?.[0] || ""}`;
         return `<li><a class="row row-own${secret ? " row-secret" : ""}" ${attrs} data-image="${r.image}" data-caption="${esc(cap)}">
           <span class="row-n"><i>${pad(i + 1)}</i><b class="eq" aria-hidden="true"><s></s><s></s><s></s></b></span>
@@ -167,6 +167,49 @@
         secret.textContent = Array.from({ length: 10 }, (_, i) => (i === 4 ? " " : glyphs[Math.floor(Math.random() * 26)])).join("");
       }, 140);
     }
+  }
+
+  // ---- mailing list for the new release ----
+  const signup = $("#signup");
+  if (signup) {
+    const { formId } = SITE.signup || {};
+    const local = ["localhost", "127.0.0.1"].includes(location.hostname);
+    const note = $(".signup-note", signup);
+    if (formId || local) signup.hidden = false;
+    if (formId) signup.action = `https://app.kit.com/forms/${formId}/subscriptions`;
+    $(".row-secret", songs || document)?.addEventListener("click", (e) => {
+      e.preventDefault();
+      signup.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
+      $("input", signup).focus({ preventScroll: true });
+    });
+    signup.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!formId) return (note.textContent = "not connected yet. add the kit form id in config.js.");
+      const button = $("button", signup);
+      button.disabled = true;
+      note.textContent = "sending…";
+      let res, body;
+      try {
+        res = await fetch(signup.action, { method: "POST", body: new FormData(signup), headers: { Accept: "application/json" } });
+        body = await res.json().catch(() => ({}));
+      } catch {
+        // Couldn't reach Kit in the background: send the form the old-fashioned way.
+        signup.target = "_blank";
+        signup.submit();
+        note.textContent = "finish signing up in the new tab.";
+        button.disabled = false;
+        return;
+      }
+      button.disabled = false;
+      if (res.ok && body.status !== "failed") {
+        signup.classList.add("is-done");
+        note.textContent = "almost. check your inbox to confirm.";
+      } else if ((body.errors?.fields || []).includes("email_address")) {
+        note.textContent = "that email doesn't look right.";
+      } else {
+        note.textContent = "something went wrong. try again in a moment.";
+      }
+    });
   }
 
   // ---- videos: one screen, a channel list ----

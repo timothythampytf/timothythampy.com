@@ -160,7 +160,7 @@ body::after {
 .songs .row { grid-template-columns: 7rem minmax(0, 1fr); row-gap: 6px; }
 .songs .row-meta { grid-column: 2; }
 .songs .row-title { font-size: clamp(34px, 4.9vw, 84px); }
-.row-secret { cursor: default; }
+.row-secret { cursor: pointer; }
 .row-secret .row-title { font-family: "R100", var(--serif); color: var(--faint); }
 .row-secret .row-meta { color: var(--accent); }
 .songs-panel { position: sticky; top: 72px; margin: 0; }
@@ -168,6 +168,26 @@ body::after {
 .songs-panel img.in-focus { filter: none; }
 .songs-panel figcaption { margin-top: 10px; color: var(--dim); }
 .songs-panel figcaption::before { content: "fig. — "; color: var(--faint); }
+
+/* mailing list, under the songs */
+.songs > div { min-width: 0; }
+.signup { margin-top: clamp(32px, 4vw, 56px); padding-left: calc(7rem + 16px); }
+.signup-lead { margin: 0 0 6px; color: var(--dim); }
+.signup-lead span { color: var(--accent); }
+.signup-row { display: flex; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--rule); }
+.signup-row:focus-within { border-color: var(--accent); }
+.signup input {
+  flex: 1; min-width: 0; padding: 6px 0 10px; background: none; border: 0; color: var(--paper);
+  font: 400 clamp(24px, 2.6vw, 36px) var(--serif); text-transform: lowercase;
+}
+.signup input::placeholder { color: var(--faint); }
+.signup input:focus { outline: none; }
+.signup button { color: var(--paper); white-space: nowrap; }
+.signup button:hover { color: var(--accent); }
+.signup button:disabled { opacity: 0.5; cursor: default; }
+.signup-note { margin: 8px 0 0; color: var(--faint); }
+.signup.is-done .signup-row { opacity: 0.4; pointer-events: none; }
+.signup.is-done .signup-note { color: var(--accent); }
 
 /* ---------- videos: one screen and a channel list ---------- */
 .tv { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr); gap: clamp(20px, 3vw, 48px); padding-top: 24px; }
@@ -275,6 +295,7 @@ body::after {
   .row-meta { grid-column: 2; }
   .row-year { display: none; }
   .songs .row { grid-template-columns: 3rem minmax(0, 1fr); }
+  .signup { padding-left: 0; }
   .songs { grid-template-columns: 1fr; }
   .songs-panel { position: static; order: -1; }
   .tv { grid-template-columns: 1fr; }

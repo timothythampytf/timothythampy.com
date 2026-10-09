@@ -33,6 +33,10 @@ window.SITE = {
     "5nBvkAMnwgWb2yUTNFkQfI": "talkhiyaan · sony music india",
   },
 
+  // Mailing list for the new release (Kit, kit.com). Paste the form's ID to switch it on;
+  // until then the signup only shows in the local preview.
+  signup: { formId: "10024730" },
+
   // Side B: your own songs, newest first. The first one is shown by default.
   own: [
     { title: "", kind: "new · soon", image: "assets/photos/blur-soft.jpg" }, // unannounced: shown scrambled
@@ -51,7 +55,7 @@ window.SITE = {
 
   // Liner notes: collaborators listed under "has made records with" are taken from
   // the credits, except anyone named here.
-  hideFromNotes: ["Samuel Ninan Thomas"],
+  hideFromNotes: [],
 
   // The contact sheet.
   photos: [
