@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>credits — timothy thampy</title>
+  <meta name="description" content="Every record produced by Timothy Thampy.">
+  <meta name="theme-color" content="#0b0b0a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/redaction-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/redaction-100-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fragment-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="bar-name" href="index.html">timothy thampy</a>
+    <nav aria-label="sections">
+      <ol>
+        <li><a href="index.html#work" data-k="a">work</a></li>
+        <li><a href="index.html#songs" data-k="b">songs</a></li>
+        <li><a href="index.html#videos" data-k="c">videos</a></li>
+        <li><a href="index.html#contact" data-k="d">contact</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-top">
+      <h1 class="resolve fit" data-max="260" data-delay="150">credits</h1>
+      <p class="sub">
+        <span class="label">index</span>
+        <span>every record i've produced, newest first.</span>
+        <a href="https://open.spotify.com/playlist/4IcAhkflAIH94HQIM6VDLl" target="_blank" rel="noopener">playlist ↗</a>
+      </p>
+    </div>
+    <label class="search-wrap">
+      <span class="label"><span class="shown-count"></span> / <span class="credit-count"></span></span>
+      <input class="search" id="credits-search" type="search" placeholder="find a song or an artist" autocomplete="off">
+    </label>
+    <ol class="credits tracks" id="credits-list"></ol>
+  </main>
+
+  <footer class="foot">
+    <span>© <span class="year-now">2026</span> timothy thampy</span>
+    <ul class="links"></ul>
+  </footer>
+
+  <div class="ghost" aria-hidden="true"><img alt=""></div>
+
+  <div class="player" hidden>
+    <div class="player-top"><span class="player-title"></span><button class="player-close">close ×</button></div>
+    <iframe title="spotify player" allow="autoplay; clipboard-write; encrypted-media"></iframe>
+  </div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/credits-data.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
