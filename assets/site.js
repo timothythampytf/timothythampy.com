@@ -125,18 +125,18 @@
     </a></li>`;
   };
 
-  // ---- side a ----
-  const sideA = $("#side-a");
-  if (sideA) sideA.innerHTML = SITE.selected.map((id) => byId[id]).filter(Boolean).map((c, i) => row(c, i + 1)).join("");
+  // ---- side a: records for other artists ----
+  const work = $("#work-list");
+  if (work) work.innerHTML = SITE.selected.map((id) => byId[id]).filter(Boolean).map((c, i) => row(c, i + 1)).join("");
   $$(".credit-count").forEach((el) => (el.textContent = CREDITS.length));
   $$(".selected-count").forEach((el) => (el.textContent = pad(SITE.selected.length)));
 
-  // ---- side b: hovering a record swaps the picture beside it ----
-  const sideB = $("#side-b");
-  if (sideB) {
-    const panel = $(".side-b-panel img");
-    const caption = $(".side-b-panel figcaption");
-    sideB.innerHTML = SITE.own
+  // ---- side b: his songs. hovering one swaps the picture beside it ----
+  const songs = $("#songs-list");
+  if (songs) {
+    const panel = $(".songs-panel img");
+    const caption = $(".songs-panel figcaption");
+    songs.innerHTML = SITE.own
       .map((r, i) => {
         const secret = !r.title;
         const attrs = r.play ? `href="#" data-play="${r.play}" data-label="${esc(r.title)}"` : `role="presentation"`;
@@ -155,12 +155,12 @@
       caption.textContent = el.dataset.caption;
       (panel.decode ? panel.decode() : Promise.resolve()).catch(() => {}).then(() => requestAnimationFrame(() => panel.classList.add("in-focus")));
     };
-    $$(".row-own", sideB).forEach((el) => {
+    $$(".row-own", songs).forEach((el) => {
       el.addEventListener("pointerenter", () => show(el));
       el.addEventListener("focus", () => show(el));
     });
     // The unreleased title never settles.
-    const secret = $(".row-secret .row-title", sideB);
+    const secret = $(".row-secret .row-title", songs);
     if (secret && !still) {
       const glyphs = "abcdefghijklmnopqrstuvwxyz";
       setInterval(() => {
@@ -194,6 +194,34 @@
     tune(current);
   }
 
+  // ---- liner notes: everyone he has made records with, most frequent first ----
+  const names = $("#names");
+  if (names) {
+    const hide = new Set(["Timothy Thampy", ...(SITE.hideFromNotes || [])]);
+    const tally = {};
+    CREDITS.forEach((c) => c.artists.forEach((a) => !hide.has(a) && (tally[a] = (tally[a] || 0) + 1)));
+    const people = Object.entries(tally).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    names.innerHTML = people
+      .map(([a, n]) => `<li><a class="row" href="credits.html?q=${encodeURIComponent(lc(a))}"><span class="row-title">${esc(lc(a))}</span>${n > 1 ? `<sup>${n}</sup>` : ""}</a></li>`)
+      .join("");
+    const years = CREDITS.map((c) => +c.date.slice(0, 4));
+    $("#figures").innerHTML = `<span><b>${CREDITS.length}</b> records</span><span><b>${people.length}</b> artists</span><span>since <b>${Math.min(...years)}</b></span>`;
+  }
+
+  // The portrait pulls focus as you scroll past, but never quite gets there.
+  const portrait = $(".portrait img");
+  if (portrait && !still) {
+    let queued = false;
+    const focusPull = () => {
+      queued = false;
+      const r = portrait.getBoundingClientRect();
+      const t = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 0.9 + r.height * 0.5)));
+      portrait.style.filter = `blur(${(22 - t * 19).toFixed(1)}px)`;
+    };
+    addEventListener("scroll", () => queued || ((queued = true), requestAnimationFrame(focusPull)), { passive: true });
+    focusPull();
+  }
+
   // ---- contact sheet ----
   const sheet = $("#sheet");
   if (sheet) {
@@ -219,8 +247,12 @@
           .join("") || `<li class="empty">nothing here. yet.</li>`;
       $(".shown-count").textContent = pad(rows.length);
     };
-    render();
-    $("#credits-search")?.addEventListener("input", (e) => render(e.target.value));
+    // credits.html?q=bendi arrives already filtered (linked from the liner notes).
+    const search = $("#credits-search");
+    const q = new URLSearchParams(location.search).get("q") || "";
+    if (search) search.value = q;
+    render(q);
+    search?.addEventListener("input", (e) => render(e.target.value));
   }
 
   // ---- contact + footer ----

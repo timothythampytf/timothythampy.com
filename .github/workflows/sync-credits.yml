@@ -1,0 +1,43 @@
+name: Sync credits from Spotify
+
+on:
+  schedule:
+    - cron: "30 1 * * *" # daily, 7:00 am in Mumbai
+  workflow_dispatch: # "Run workflow" button on GitHub
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-credits
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Read the playlist
+        run: node scripts/sync-credits.mjs
+
+      - name: Publish if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard assets/covers)" ]; then
+            echo "Nothing new on the playlist."
+            exit 0
+          fi
+          git config user.name "credits-sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/credits-data.js assets/covers
+          git commit -m "Sync credits from Spotify playlist"
+          git push
+          # Pushes made by this workflow don't always start a Pages build on their own.
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" --silent || true

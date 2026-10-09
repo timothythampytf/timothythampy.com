@@ -17,11 +17,17 @@ python3 -m http.server 4890
 
 Then open http://localhost:4890. The opening photo follows the time in Mumbai; add `?sky=day`, `?sky=dusk` or `?sky=night` to preview each one.
 
-## Add a new credit
+## Credits sync
 
-1. Save the cover as `assets/covers/<spotify-track-id>.jpg`.
-2. Add a line at the top of `assets/credits-data.js`.
-3. To feature it on the home page, add the ID to `selected` in `assets/config.js`.
+`assets/credits-data.js` follows the "produced by timothy thampy" Spotify playlist.
+A GitHub Action (`.github/workflows/sync-credits.yml`) runs `scripts/sync-credits.mjs`
+every morning: new songs and their covers are added, removed ones are dropped, and the
+live site updates. Run it now from the repo's Actions tab ("Run workflow"), or locally
+with `node scripts/sync-credits.mjs`.
+
+- Skip a playlist song: add its ID to `creditsIgnore` in `assets/config.js`.
+- Feature a song on the home page: add its ID to `selected` in `assets/config.js` (that list is hand-picked).
+- GitHub pauses scheduled jobs on repos with no commits for 60 days; if that happens, re-enable it in the Actions tab.
 
 ## Deploy
 

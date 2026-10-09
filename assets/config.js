@@ -9,8 +9,12 @@ window.SITE = {
     x: "https://x.com/timothythampy",
   },
   creditsPlaylist: "https://open.spotify.com/playlist/4IcAhkflAIH94HQIM6VDLl",
+  // Playlist songs the daily sync leaves off the site.
+  creditsIgnore: [
+    "5XKZeNahjRUcFtDkXKalZw", // 5 o clock (ep version): same song as the single
+  ],
 
-  // Side A: Spotify track IDs shown on the home page, in this order.
+  // Side A: records produced for other artists, shown on the home page in this order.
   selected: [
     "2PvoucU5Pm9SeLN9neuJpX", // Parchhaiyan
     "15Z1xuTPQjErBcsaFpunGg", // Yeh Duniya Jala Do
@@ -29,21 +33,25 @@ window.SITE = {
     "5nBvkAMnwgWb2yUTNFkQfI": "talkhiyaan · sony music india",
   },
 
-  // Side B: your own records.
+  // Side B: your own songs, newest first. The first one is shown by default.
   own: [
+    { title: "", kind: "new · soon", image: "assets/photos/blur-soft.jpg" }, // unannounced: shown scrambled
     { title: "songs for nora", kind: "ep · 2023 · 4 songs", play: "album:6CTvqSSrEKH9Ew65L4Reo3", image: "assets/photos/sfn-cover.jpg" },
     { title: "5 o clock", kind: "single · 2023", play: "5QEpxX8kBJ7N4l3kijhand", image: "assets/covers/5QEpxX8kBJ7N4l3kijhand.jpg" },
-    { title: "", kind: "new · soon", image: "assets/photos/blur-soft.jpg" }, // unannounced: shown scrambled
   ],
 
   // YouTube video IDs.
   videos: [
     { id: "QKcLGOggorU", title: "parchhaiyan", by: "janisht joshi, phosphenes" },
+    { id: "txLdwUxCbAo", title: "5 o clock", by: "timothy thampy" },
     { id: "9tlgRdap8Uc", title: "yeh duniya jala do", by: "janisht joshi" },
     { id: "DKgiLPkfyLA", title: "nahi", by: "janisht joshi" },
-    { id: "txLdwUxCbAo", title: "5 o clock", by: "timothy thampy" },
     { id: "BwfY6aeIVSE", title: "how i produced nahi", by: "in the studio" },
   ],
+
+  // Liner notes: collaborators listed under "has made records with" are taken from
+  // the credits, except anyone named here.
+  hideFromNotes: ["Samuel Ninan Thomas"],
 
   // The contact sheet.
   photos: [
