@@ -120,7 +120,7 @@ body::after {
   padding: 14px 0 12px; border-bottom: 1px solid var(--rule);
 }
 .row-n { color: var(--dim); font-variant-numeric: tabular-nums; position: relative; }
-.row-title { font: 400 clamp(30px, 4.3vw, 66px)/0.98 var(--serif); letter-spacing: -0.015em; transition: color 0.2s; overflow-wrap: anywhere; }
+.row-title { font: 400 clamp(26px, 3.2vw, 50px)/0.98 var(--serif); letter-spacing: -0.015em; transition: color 0.2s; overflow-wrap: anywhere; }
 .row-meta { color: var(--dim); }
 .row-meta em { display: block; font-style: normal; color: var(--faint); }
 .row-year { color: var(--dim); text-align: right; }
@@ -157,8 +157,9 @@ body::after {
 
 /* ---------- side a: songs ---------- */
 .songs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
-.songs .row { grid-template-columns: 7rem minmax(0, 1fr) auto; }
-.songs .row-title { font-size: clamp(40px, 6vw, 104px); }
+.songs .row { grid-template-columns: 7rem minmax(0, 1fr); row-gap: 6px; }
+.songs .row-meta { grid-column: 2; }
+.songs .row-title { font-size: clamp(34px, 4.9vw, 84px); }
 .row-secret { cursor: default; }
 .row-secret .row-title { font-family: "R100", var(--serif); color: var(--faint); }
 .row-secret .row-meta { color: var(--accent); }
@@ -285,7 +286,7 @@ body::after {
   .search-wrap .label { display: none; }
 }
 @media (max-width: 560px) {
-  .bar { grid-template-columns: 1fr; }
+  .bar { grid-template-columns: 1fr; padding-top: 14px; padding-bottom: 12px; mix-blend-mode: normal; background: rgba(11, 11, 10, 0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
   .bar-name { display: none; }
   .bar nav ol { justify-content: space-between; }
   .bar nav a::before { display: none; }
