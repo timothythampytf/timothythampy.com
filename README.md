@@ -25,4 +25,9 @@ Then open http://localhost:4890. The opening photo follows the time in Mumbai; a
 
 ## Deploy
 
-Drag this folder into Netlify Drop, or connect it to Vercel or Cloudflare Pages. Then point the timothythampy.com domain at it and cancel the Wix plan.
+Hosted on GitHub Pages from the `main` branch of github.com/timothythampytf/timothythampy.com.
+Commit and push to `main` and the live site updates within a minute or two.
+
+DNS (at Squarespace Domains) points `timothythampy.com` to GitHub Pages:
+A records 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153,
+and `www` as a CNAME to `timothythampytf.github.io`.
