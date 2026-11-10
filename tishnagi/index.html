@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="TISHNAGI, the new single from Timothy Thampy. Out 13 November 2026.">
+<meta property="og:title" content="TISHNAGI · Timothy Thampy">
+<meta property="og:description" content="New single, out 13 November 2026. Press kit, private stream and photos.">
+<meta property="og:image" content="https://timothythampy.com/tishnagi/cover.jpg">
+<meta property="og:url" content="https://timothythampy.com/tishnagi/">
+<meta name="twitter:card" content="summary_large_image">
+<title>TISHNAGI · Timothy Thampy</title>
+<style>
+@font-face { font-family: "R"; src: url(/assets/fonts/redaction-latin-400-normal.woff2) format("woff2"); font-display: swap; }
+@font-face { font-family: "R"; src: url(/assets/fonts/redaction-latin-400-italic.woff2) format("woff2"); font-style: italic; font-display: swap; }
+
+/* Layout: same world as timothythampy.com. Full-bleed cover with the title set over it,
+   then a single reading column; section heads in the pixel cut of Redaction like the site's "liner notes". */
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+:root {
+  --ink: #0d0d0c;
+  --rule: #2a2826;
+  --paper: #ebe7de;
+  --dim: #8e897f;
+  --dusk: #e8a3cb;
+  --serif: "R", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ink); color: var(--paper); font-family: var(--serif); font-size: 19px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration-color: var(--dim); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+a:hover { color: var(--dusk); text-decoration-color: var(--dusk); }
+a:focus-visible, button:focus-visible { outline: 1px solid var(--dusk); outline-offset: 4px; }
+.mono { font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--dim); }
+.gut { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* hero: the cover as it is, square, with the title under it */
+.hero { padding-block: 24px 0; }
+.hero .cover { display: block; width: 100%; max-width: 620px; aspect-ratio: 1 / 1; height: auto; object-fit: cover; }
+.hero h1 { margin: 22px 0 0; font-weight: 400; font-size: clamp(52px, 14vw, 150px); line-height: .9; letter-spacing: -.02em; }
+
+.wrap { max-width: 980px; margin: 0 auto; }
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: end; padding-block: 28px 8px; }
+.byline { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; margin: 0 0 8px; }
+.spec { margin: 0; }
+.listen { font-size: clamp(22px, 2.6vw, 28px); text-decoration-color: var(--dusk); white-space: nowrap; }
+.listen-wrap { text-align: right; }
+.listen-wrap .mono { margin: 6px 0 0; }
+
+section { margin-top: 80px; padding-top: 18px; border-top: 1px solid var(--rule); }
+h2 { font-family: var(--sans); font-weight: 500; font-size: 13px; line-height: 1.4; margin: 0 0 28px; color: var(--dim); }
+.col { max-width: 40em; }
+.col p { margin: 0 0 1em; }
+.lede { font-size: clamp(26px, 3.3vw, 36px); line-height: 1.2; margin: 0 0 24px; text-wrap: balance; }
+
+/* records list, as on the site */
+.records { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.records li { border-bottom: 1px solid var(--rule); }
+.records a { display: grid; grid-template-columns: 2.4em minmax(0, 1fr) minmax(0, 15em) 3em; gap: 4px 16px; align-items: baseline; padding: 10px 0; text-decoration: none; }
+.records .n, .records .who, .records .yr { font-family: var(--sans); font-size: 13px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.records .yr { text-align: right; font-variant-numeric: tabular-nums; }
+.records .t { font-size: clamp(22px, 2.7vw, 30px); line-height: 1.15; }
+.records .who em { font-style: normal; display: block; color: var(--dim); opacity: .8; }
+.records a:hover .t { color: var(--dusk); }
+.more { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; }
+
+
+dl.credits { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 28px; align-items: baseline; }
+dl.credits dt { font-family: var(--sans); font-size: 13px; color: var(--dim); }
+dl.credits dd { margin: 0; font-size: 22px; }
+
+.sheet { columns: 3 220px; column-gap: 14px; }
+.sheet figure { margin: 0 0 18px; break-inside: avoid; }
+.sheet img { width: 100%; max-width: 100%; height: auto; display: block; }
+.sheet figcaption { margin-top: 6px; }
+
+.links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; font-size: 22px; }
+.email { font-size: clamp(24px, 3.4vw, 36px); user-select: all; overflow-wrap: anywhere; margin: 0 0 8px; }
+.copy { font-family: var(--sans); font-size: 13px; color: var(--dim); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.copy:hover { color: var(--dusk); }
+footer { padding-block: 80px 36px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 720px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .listen-wrap { text-align: left; }
+  .records a { grid-template-columns: 2em minmax(0, 1fr) 3em; }
+  .records .who { grid-column: 2 / 4; grid-row: 2; }
+  section { margin-top: 56px; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="hero gut">
+  <div class="wrap">
+    <img class="cover" src="/tishnagi/cover.jpg" width="1600" height="1600" alt="TISHNAGI cover art: a blurred figure in a pink shirt looking out at the sea at dusk.">
+    <h1>TISHNAGI</h1>
+  </div>
+</header>
+
+<main class="gut">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <p class="byline">Timothy Thampy</p>
+        <p class="spec mono">single · 3:36 · Hindi · alt-pop, synth-pop · out 13 November 2026</p>
+      </div>
+      <div class="listen-wrap">
+        <a class="listen" href="https://promo.awal.com/7F44oMc7iimi5424xRBr" target="_blank" rel="noopener">listen to the song</a>
+        <p class="mono">private link. please don’t share before release.</p>
+      </div>
+    </div>
+
+    <section id="song">
+      <h2>the song</h2>
+      <div class="col">
+        <p class="lede">A hopeful Hindi alt-pop song about letting your guard down and searching, honestly, for something bigger than yourself.</p>
+        <p>TISHNAGI means thirst. Here it is a thirst for the truth: the song is about being vulnerable, being honest with yourself, and reaching for a higher power when you can't find the answers alone. The production keeps it bright and hopeful. Midway through, the song shifts into a slower second half in a new key, carried by the same hook.</p>
+        <p class="mono">for fans of Bleachers, Frank Ocean, FINNEAS.</p>
+      </div>
+    </section>
+
+    <section id="artist">
+      <h2>about</h2>
+      <div class="col">
+        <p>Timothy Thampy is a producer and songwriter based in Mumbai. Since 2022 he has produced more than 40 records, working with artists including Janisht Joshi, Raghav Meattle, Phosphenes, sudan, BENDI, Sagar Verma and Utsavi Jha.</p>
+        <p>His recent work includes “Parchhaiyan” and “Ab Na Laut Paayenge” from <em>Talkhiyaan</em>, released through Sony Music India. Under his own name he has released the EP <em>songs for nora</em> and the single “5 o clock”, both in 2023. TISHNAGI is written, produced and sung by him, and mixed and mastered by pixlpxl®.</p>
+      </div>
+    </section>
+
+    <section id="credits">
+      <h2>credits</h2>
+      <dl class="credits">
+        <dt>written by</dt><dd>Timothy Thampy</dd>
+        <dt>produced by</dt><dd>Timothy Thampy</dd>
+        <dt>vocals</dt><dd>Timothy Thampy</dd>
+        <dt>mix &amp; master</dt><dd>pixlpxl®</dd>
+        <dt>distributed by</dt><dd>AWAL</dd>
+      </dl>
+    </section>
+
+    <section id="photos">
+      <h2>photos</h2>
+      <div class="sheet">
+        <figure><img src="/tishnagi/cover.jpg" alt="TISHNAGI cover art"><figcaption class="mono">cover art</figcaption></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-01.jpg" alt="Timothy Thampy, portrait in daylight"></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-03.jpg" alt="Timothy Thampy seated on a chair in the shallows at blue hour"></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-02.jpg" alt="Timothy Thampy from behind at the shore, pink dusk"></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-04.jpg" alt="Timothy Thampy carrying a chair along the waterline"></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-05.jpg" alt="Timothy Thampy in profile at sunset"></figure>
+        <figure><img loading="lazy" src="/tishnagi/photo-06.jpg" alt="Timothy Thampy standing by a chair in the sea, wide"></figure>
+      </div>
+      <p><a href="https://drive.google.com/drive/folders/1ctH3BjYp4IrgeAWF57eKfSchCIp0uSho" target="_blank" rel="noopener">download hi-res cover and photos</a></p>
+    </section>
+
+    <section id="produced">
+      <h2>production work</h2>
+      <ol class="records">
+        <li><a href="https://open.spotify.com/track/15Z1xuTPQjErBcsaFpunGg" target="_blank" rel="noopener"><span class="n">01</span><span class="t">Yeh Duniya Jala Do</span><span class="who">Janisht Joshi</span><span class="yr">2024</span></a></li>
+        <li><a href="https://open.spotify.com/track/0blM9YkjL82jrhF8sd9pup" target="_blank" rel="noopener"><span class="n">02</span><span class="t">Nahi</span><span class="who">Janisht Joshi</span><span class="yr">2024</span></a></li>
+        <li><a href="https://open.spotify.com/track/5nBvkAMnwgWb2yUTNFkQfI" target="_blank" rel="noopener"><span class="n">03</span><span class="t">Ab Na Laut Paayenge</span><span class="who">Janisht Joshi, gini, sudan<em>Talkhiyaan · Sony Music India</em></span><span class="yr">2026</span></a></li>
+        <li><a href="https://open.spotify.com/track/2PvoucU5Pm9SeLN9neuJpX" target="_blank" rel="noopener"><span class="n">04</span><span class="t">Parchhaiyan</span><span class="who">Janisht Joshi, Phosphenes<em>Talkhiyaan · Sony Music India</em></span><span class="yr">2026</span></a></li>
+        <li><a href="https://open.spotify.com/track/4kJ6jb1QL8vQbkwhNZFsLQ" target="_blank" rel="noopener"><span class="n">05</span><span class="t">Tere Bina</span><span class="who">Raghav Meattle</span><span class="yr">2024</span></a></li>
+        <li><a href="https://open.spotify.com/track/0FXMgqU9FgWTPO7HikTmPB" target="_blank" rel="noopener"><span class="n">06</span><span class="t">Tu Hai</span><span class="who">Heeya Tikku, Rohan Upadeo</span><span class="yr">2026</span></a></li>
+        <li><a href="https://open.spotify.com/track/7JhBRChdbGS6sJVpNpRYFQ" target="_blank" rel="noopener"><span class="n">07</span><span class="t">thunderstorms by the pool</span><span class="who">BENDI, sudan</span><span class="yr">2026</span></a></li>
+      </ol>
+      <div class="more mono"><span>7 of 41 records</span><a href="https://timothythampy.com/credits.html" target="_blank" rel="noopener">all credits</a></div>
+    </section>
+
+    <section id="contact">
+      <h2>contact</h2>
+      <p class="email" id="email">timothythampy@gmail.com</p>
+      <button class="copy" id="copy-email" type="button">copy address</button>
+      <ul class="links" style="margin-top: 32px">
+        <li><a href="https://open.spotify.com/artist/516N84Zm8jTFBAIDSK3uLK" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.apple.com/us/artist/timothy-thampy/1651133962" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="https://www.instagram.com/timothythampy/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@timothythampy" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://timothythampy.com" target="_blank" rel="noopener">timothythampy.com</a></li>
+      </ul>
+    </section>
+
+    <footer class="mono"><span>TISHNAGI · Timothy Thampy</span><span>Mumbai, 2026</span></footer>
+  </div>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email'), el = document.getElementById('email');
+  function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'selected'; }
+  btn.addEventListener('click', function () {
+    try { navigator.clipboard.writeText(el.textContent.trim()).then(function () { btn.textContent = 'copied'; setTimeout(function () { btn.textContent = 'copy address'; }, 1800); }, sel); }
+    catch (e) { sel(); }
+  });
+})();
+</script>
+
+</body>
+</html>
