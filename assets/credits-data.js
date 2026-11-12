@@ -2,6 +2,7 @@
 // Updated automatically every day by scripts/sync-credits.mjs. Edits here are kept
 // for songs still on the playlist; to hide a playlist song, add its ID to creditsIgnore in config.js.
 window.CREDITS = [
+  { id: "4AAhITjEbVBNdOrVfd0goW", title: "18 February", artists: ["TRIO"], date: "2026-11-09" },
   { id: "6zdf7rE50ldtl4HSCXZMyn", title: "usey pata bhi nahi", artists: ["Sagar Verma", "Timothy Thampy"], date: "2026-10-01" },
   { id: "6XuhvxY7GwQwljUTSQMzOB", title: "bring you back", artists: ["Drishika Kar"], date: "2026-07-03" },
   { id: "0FXMgqU9FgWTPO7HikTmPB", title: "Tu Hai", artists: ["Heeya Tikku", "Rohan Upadeo", "Timothy Thampy"], date: "2026-06-18" },
