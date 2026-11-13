@@ -33,13 +33,18 @@ window.SITE = {
     "5nBvkAMnwgWb2yUTNFkQfI": "talkhiyaan · sony music india",
   },
 
-  // Mailing list for the new release (Kit, kit.com). Paste the form's ID to switch it on;
+  // The newest song's page with every streaming link (listen/<song>/), linked under side b.
+  latest: { title: "TISHNAGI", href: "listen/tishnagi/" },
+
+  // Mailing list for new releases (Kit, kit.com). Paste the form's ID to switch it on;
   // until then the signup only shows in the local preview.
   signup: { formId: "10024730" },
 
   // Side B: your own songs, newest first. The first one is shown by default.
+  // Titles are shown as written (the rest of the site is lowercase), so TISHNAGI stays in capitals.
+  // An entry with an empty title shows as a scrambled "untitled" teaser that links to the signup.
   own: [
-    { title: "", kind: "new · soon", image: "assets/photos/blur-soft.jpg" }, // unannounced: shown scrambled
+    { title: "TISHNAGI", kind: "single · 2026", play: "3d4bsiodatz0XftiWZ8Ddx", image: "tishnagi/cover.jpg" },
     { title: "songs for nora", kind: "ep · 2023 · 4 songs", play: "album:6CTvqSSrEKH9Ew65L4Reo3", image: "assets/photos/sfn-cover.jpg" },
     { title: "5 o clock", kind: "single · 2023", play: "5QEpxX8kBJ7N4l3kijhand", image: "assets/covers/5QEpxX8kBJ7N4l3kijhand.jpg" },
   ],

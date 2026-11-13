@@ -6,6 +6,8 @@
   const lc = (s) => s.toLowerCase();
   const esc = (s) => s.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
   const pad = (n) => String(n).padStart(2, "0");
+  // A title stored with capitals keeps them, even though the page is set in lowercase.
+  const asIs = (s) => (s !== lc(s) ? `<span class="as-is">${esc(s)}</span>` : esc(s));
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = matchMedia("(pointer: fine)").matches;
   // Credits list Timothy as an artist on many records; on his own site that's implied.
@@ -73,7 +75,7 @@
     const [type, sid] = id.includes(":") ? id.split(":") : ["track", id];
     if (!player) return window.open(`https://open.spotify.com/${type}/${sid}`, "_blank");
     frame.src = `https://open.spotify.com/embed/${type}/${sid}?utm_source=generator&theme=0&autoplay=1`;
-    $(".player-title", player).textContent = label;
+    $(".player-title", player).innerHTML = asIs(label);
     player.hidden = false;
     $$("[data-play]").forEach((el) => el.classList.toggle("is-playing", el.dataset.play === id));
   }
@@ -140,10 +142,10 @@
       .map((r, i) => {
         const secret = !r.title;
         const attrs = r.play ? `href="#" data-play="${r.play}" data-label="${esc(r.title)}"` : `href="#signup"`;
-        const cap = secret ? "untitled, 2026" : `${r.title}, ${r.kind.match(/\d{4}/)?.[0] || ""}`;
+        const cap = secret ? "untitled, 2026" : `${asIs(r.title)}, ${r.kind.match(/\d{4}/)?.[0] || ""}`;
         return `<li><a class="row row-own${secret ? " row-secret" : ""}" ${attrs} data-image="${r.image}" data-caption="${esc(cap)}">
           <span class="row-n"><i>${pad(i + 1)}</i><b class="eq" aria-hidden="true"><s></s><s></s><s></s></b></span>
-          <span class="row-title"${secret ? ' aria-label="untitled"' : ""}>${secret ? "untitled" : esc(r.title)}</span>
+          <span class="row-title"${secret ? ' aria-label="untitled"' : ""}>${secret ? "untitled" : asIs(r.title)}</span>
           <span class="row-meta">${esc(r.kind)}</span>
         </a></li>`;
       })
@@ -152,7 +154,7 @@
       if (panel.getAttribute("src") === el.dataset.image) return;
       panel.classList.remove("in-focus");
       panel.src = el.dataset.image;
-      caption.textContent = el.dataset.caption;
+      caption.innerHTML = el.dataset.caption;
       (panel.decode ? panel.decode() : Promise.resolve()).catch(() => {}).then(() => requestAnimationFrame(() => panel.classList.add("in-focus")));
     };
     $$(".row-own", songs).forEach((el) => {
@@ -169,7 +171,16 @@
     }
   }
 
-  // ---- mailing list for the new release ----
+  // ---- newest song: a line under side b linking to every streaming service ----
+  const latest = $("#latest");
+  if (latest && SITE.latest?.href) {
+    const a = $("a", latest);
+    a.href = SITE.latest.href;
+    a.innerHTML = `${asIs(SITE.latest.title)}, out now. listen anywhere`;
+    latest.hidden = false;
+  }
+
+  // ---- mailing list for new releases ----
   const signup = $("#signup");
   if (signup) {
     const { formId } = SITE.signup || {};
